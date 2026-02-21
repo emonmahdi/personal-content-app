@@ -1,12 +1,12 @@
-import './App.css'
+import Dashboard from "./pages/Dashboard";
+import { ThemeProvider } from "./context/ThemeContext";
 
-function App() { 
-
+function App() {
   return (
-    <>
-      <h2 className='text-3xl font-bold underline bg-purple-700 p-4'>Personal Content App</h2>
-    </>
-  )
+    <ThemeProvider>
+      <Dashboard />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
