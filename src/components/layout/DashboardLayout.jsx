@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import Sidebar from "./Sidebar";
 import ContentArea from "./ContentArea";
+import Header from "./Header";
 
 const DashboardLayout = () => {
   const [selected, setSelected] = useState(null);
@@ -10,9 +11,15 @@ const DashboardLayout = () => {
   }, []);
 
   return (
-    <div className="flex h-screen bg-gray-950">
-      <Sidebar onSelect={handleSelect} active={selected} />
-      <ContentArea selected={selected} />
+    <div className="flex flex-col h-screen bg-gray-950">
+      {/* Top Navbar */}
+      <Header />
+
+      {/* Main Body */}
+      <div className="flex flex-1 overflow-hidden">
+        <Sidebar onSelect={handleSelect} active={selected} />
+        <ContentArea selected={selected} />
+      </div>
     </div>
   );
 };
