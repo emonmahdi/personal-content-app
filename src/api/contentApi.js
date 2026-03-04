@@ -90,3 +90,53 @@ export const fetchSingleContent = async (id) => {
     return null;
   }
 };
+
+export const fetchAllContent = async () => {
+  try {
+    const response = await fetch(`http://localhost:5000/api/content/all`);
+    if (!response.ok) return [];
+    const result = await response.json();
+    return Array.isArray(result) ? result : [];
+  } catch (error) {
+    console.error("Fetch all content error:", error);
+    return [];
+  }
+};
+
+// Delete content by ID
+export const deleteContent = async (id) => {
+  try {
+    const response = await fetch(`http://localhost:5000/api/content/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) throw new Error("Failed to delete content");
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Delete content error:", error);
+    throw error;
+  }
+};
+
+// Update content by ID
+export const updateContent = async (id, data) => {
+  try {
+    const response = await fetch(`http://localhost:5000/api/content/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) throw new Error("Failed to update content");
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Update content error:", error);
+    throw error;
+  }
+};

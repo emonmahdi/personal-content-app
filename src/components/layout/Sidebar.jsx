@@ -1,9 +1,14 @@
+import { Link } from "react-router";
 import { menuData } from "../../data/menuData";
 import SidebarItem from "./SidebarItem";
 
 const Sidebar = ({ onSelect, active }) => {
   return (
     <div className="w-72 h-full bg-gray-900 text-gray-200 p-6 border-r border-gray-800 overflow-y-auto">
+      <p className="px-8 py-3">
+        {" "}
+        <Link to={"/"}>Dashboard</Link>
+      </p>
       {menuData.map((category) => (
         <SidebarItem
           key={category.id}
