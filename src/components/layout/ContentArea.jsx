@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import { fetchContentByCategory } from "../../api/contentApi";
+import { Link } from "react-router";
 
 const ContentArea = ({ selected }) => {
   const [data, setData] = useState([]);
@@ -50,7 +51,11 @@ const ContentArea = ({ selected }) => {
               {item.title}
             </h2>
 
-            <p className="text-gray-400 mt-2">{item.description}</p>
+            <p className="text-gray-400 mt-2">
+              {item.description?.length > 120
+                ? item.description.substring(0, 120) + "..."
+                : item.description}
+            </p>
 
             <div className="text-sm text-gray-500 mt-3 flex justify-between">
               <span>Author: {item.author}</span>
@@ -66,6 +71,11 @@ const ContentArea = ({ selected }) => {
                 Ref: {item.reference}
               </div>
             )}
+            <Link to={`/content/${item._id}`}>
+              <button className="mt-3 text-blue-400 hover:underline cursor-pointer">
+                Read More →
+              </button>
+            </Link>
           </div>
         ))}
       </div>

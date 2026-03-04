@@ -1,10 +1,10 @@
-import Dashboard from "./pages/Dashboard";
+import { Outlet } from "react-router";
 import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
     <ThemeProvider>
-      <Dashboard />
+      <Outlet />
     </ThemeProvider>
   );
 }

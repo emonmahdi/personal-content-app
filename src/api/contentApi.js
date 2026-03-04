@@ -69,3 +69,24 @@ export const fetchContentByCategory = async (category) => {
     return [];
   }
 };
+
+// Fetch single content by ID
+export const fetchSingleContent = async (id) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/content/${id}`
+    );
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const result = await response.json();
+
+    // Backend returns single object
+    return result || null;
+  } catch (error) {
+    console.error("Fetch single content error:", error);
+    return null;
+  }
+};
