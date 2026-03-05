@@ -27,6 +27,16 @@ const ContentArea = ({ selected }) => {
     console.log("Selected Category:", selected);
   }, [selected]);
 
+  // Function to strip HTML tags and truncate
+  const truncateHTML = (html, maxLength = 120) => {
+    if (!html) return "";
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    const text = tempDiv.textContent || tempDiv.innerText || "";
+    if (text.length > maxLength) return text.substring(0, maxLength) + "...";
+    return text;
+  };
+
   return (
     <div className="flex-1 p-6 overflow-y-auto text-gray-200">
       {!selected && (
@@ -51,11 +61,14 @@ const ContentArea = ({ selected }) => {
               {item.title}
             </h2>
 
-            <p className="text-gray-400 mt-2">
+            {/* <p className="text-gray-400 mt-2">
               {item.description?.length > 120
                 ? item.description.substring(0, 120) + "..."
                 : item.description}
-            </p>
+            </p> */}
+            <div className="prose prose-invert max-w-none text-gray-400 mt-2">
+              {truncateHTML(item.description, 120)}
+            </div>
 
             <div className="text-sm text-gray-500 mt-3 flex justify-between">
               <span>Author: {item.author}</span>

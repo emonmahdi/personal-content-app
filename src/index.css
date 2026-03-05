@@ -1,1 +1,26 @@
+/* Responsive editor height */
+.ql-editor {
+    min-height: 200px; /* mobile default */
+  }
+  
+  /* Larger screens */
+  @media (min-width: 768px) {
+    .ql-editor {
+      min-height: 300px; /* tablet */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .ql-editor {
+      min-height: 400px; /* desktop */
+    }
+  }
+  
+  /* Optional: dark theme for editor content */
+  .ql-editor {
+    background-color: #1f2937; /* Tailwind gray-900 */
+    color: #f3f4f6; /* Tailwind gray-100 */
+  }
+
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";

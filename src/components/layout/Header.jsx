@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { FaUserCircle, FaChevronDown } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -39,13 +40,17 @@ const Header = () => {
         {/* Dropdown */}
         {open && (
           <div className="absolute right-0 mt-3 w-48 bg-gray-800 rounded-lg shadow-lg border border-gray-700 overflow-hidden">
-            <button className="w-full text-left px-4 py-2 hover:bg-gray-700 transition">
-              Admin Panel
-            </button>
-            <button className="w-full text-left px-4 py-2 hover:bg-gray-700 transition">
-              Settings
-            </button>
-            <button className="w-full text-left px-4 py-2 hover:bg-red-600 hover:text-white transition">
+            <Link to="/admin">
+              <button className="w-full text-left px-4 py-2 text-white hover:bg-gray-700 transition cursor-pointer">
+                Admin Panel
+              </button>
+            </Link>
+            <Link to="/">
+              <button className="w-full text-left px-4 py-2 text-white hover:bg-gray-700 transition cursor-pointer">
+                Dashboard
+              </button>
+            </Link>
+            <button className="w-full text-left px-4 py-2 text-white hover:bg-red-600 hover:text-white transition cursor-pointer">
               Logout
             </button>
           </div>

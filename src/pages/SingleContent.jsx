@@ -20,9 +20,7 @@ const SingleContent = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-950 text-white p-6">
-        Loading...
-      </div>
+      <div className="min-h-screen bg-gray-950 text-white p-6">Loading...</div>
     );
   }
 
@@ -44,9 +42,7 @@ const SingleContent = () => {
       </button>
 
       <div className="max-w-3xl mx-auto bg-gray-900 p-6 rounded-xl border border-gray-800">
-        <h1 className="text-3xl font-bold text-blue-400 mb-4">
-          {data.title}
-        </h1>
+        <h1 className="text-3xl font-bold text-blue-400 mb-4">{data.title}</h1>
 
         <div className="text-sm text-gray-500 mb-6 flex justify-between">
           <span>Author: {data.author}</span>
@@ -57,9 +53,16 @@ const SingleContent = () => {
           </span>
         </div>
 
-        <p className="leading-relaxed text-gray-300 whitespace-pre-line">
+        {/* <p className="leading-relaxed text-gray-300 whitespace-pre-line">
           {data.description}
-        </p>
+        </p> */}
+        <div className="prose prose-invert max-w-none">
+          <p
+            dangerouslySetInnerHTML={{
+              __html: data?.description || "",
+            }}
+          />
+        </div>
 
         {data.reference && (
           <div className="mt-6 text-sm text-gray-500">
