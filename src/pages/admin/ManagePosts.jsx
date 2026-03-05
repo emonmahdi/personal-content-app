@@ -9,6 +9,7 @@ import {
   updateContent,
 } from "../../api/contentApi";
 import { menuData } from "../../data/menuData";
+import Swal from "sweetalert2";
 
 Modal.setAppElement("#root"); // Required for accessibility
 
@@ -35,16 +36,42 @@ const ManagePosts = () => {
 
   // Delete post
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this post?")) return;
+    const result = await Swal.fire({
+      title: "Delete Post?",
+      text: "This action cannot be undone!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ef4444",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Yes, Delete it",
+      cancelButtonText: "Cancel",
+      background: "#111827",
+      color: "#fff",
+    });
+
+    if (!result.isConfirmed) return;
 
     try {
       await deleteContent(id);
+
       toast.success("Post deleted successfully!");
+
       setPosts(posts.filter((p) => p._id !== id));
     } catch (error) {
       toast.error(error.message || "Failed to delete post");
     }
   };
+  //   const handleDelete = async (id) => {
+  //     if (!window.confirm("Are you sure you want to delete this post?")) return;
+
+  //     try {
+  //       await deleteContent(id);
+  //       toast.success("Post deleted successfully!");
+  //       setPosts(posts.filter((p) => p._id !== id));
+  //     } catch (error) {
+  //       toast.error(error.message || "Failed to delete post");
+  //     }
+  //   };
 
   // Open update modal
   const handleEdit = (post) => {
@@ -107,13 +134,13 @@ const ManagePosts = () => {
             <div className="flex gap-3 mt-4">
               <button
                 onClick={() => handleEdit(post)}
-                className="px-3 py-1 bg-blue-600 rounded hover:bg-blue-700 transition text-white text-sm"
+                className="px-3 py-1 bg-blue-600 rounded hover:bg-blue-700 transition text-white text-sm cursor-pointer"
               >
                 Edit
               </button>
               <button
                 onClick={() => handleDelete(post._id)}
-                className="px-3 py-1 bg-red-600 rounded hover:bg-red-700 transition text-white text-sm"
+                className="px-3 py-1 bg-red-600 rounded hover:bg-red-700 transition text-white text-sm cursor-pointer"
               >
                 Delete
               </button>
