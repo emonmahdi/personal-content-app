@@ -24,7 +24,7 @@ const CreatePost = () => {
   //     try {
   //       console.log("Submitting...", data);
 
-  //       const res = await fetch("http://localhost:5000/api/content", {
+  //       const res = await fetch("https://personal-content-app-server.vercel.app/api/content", {
   //         method: "POST",
   //         headers: { "Content-Type": "application/json" },
   //         body: JSON.stringify(data),
@@ -55,7 +55,7 @@ const CreatePost = () => {
         description: description,
       };
 
-      const res = await fetch("http://localhost:5000/api/content", {
+      const res = await fetch("https://personal-content-app-server.vercel.app/api/content", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -196,7 +196,7 @@ export default CreatePost;
 //         description,
 //       };
 
-//       const res = await fetch("http://localhost:5000/api/content", {
+//       const res = await fetch("https://personal-content-app-server.vercel.app/api/content", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",

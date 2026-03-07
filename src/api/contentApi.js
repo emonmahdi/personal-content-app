@@ -21,7 +21,7 @@
 /* export const fetchContentByCategory = async (category) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/content?category=${category}`
+      `https://personal-content-app-server.vercel.app/api/content?category=${category}`
     );
 
     if (!response.ok) {
@@ -43,7 +43,7 @@
 
 export const fetchContentByCategory = async (category) => {
   const res = await axios.get(
-    `http://localhost:5000/api/content?category=${category}`
+    `https://personal-content-app-server.vercel.app/api/content?category=${category}`
   );
   return res.data;
 };
@@ -53,7 +53,7 @@ export const fetchContentByCategory = async (category) => {
 export const fetchContentByCategory = async (category) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/content?category=${category}`
+      `https://personal-content-app-server.vercel.app/api/content?category=${category}`
     );
 
     if (!response.ok) {
@@ -74,7 +74,7 @@ export const fetchContentByCategory = async (category) => {
 export const fetchSingleContent = async (id) => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/content/${id}`
+      `https://personal-content-app-server.vercel.app/api/content/${id}`
     );
 
     if (!response.ok) {
@@ -93,7 +93,7 @@ export const fetchSingleContent = async (id) => {
 
 export const fetchAllContent = async () => {
   try {
-    const response = await fetch(`http://localhost:5000/api/content/all`);
+    const response = await fetch(`https://personal-content-app-server.vercel.app/api/content/all`);
     if (!response.ok) return [];
     const result = await response.json();
     return Array.isArray(result) ? result : [];
@@ -106,7 +106,7 @@ export const fetchAllContent = async () => {
 // Delete content by ID
 export const deleteContent = async (id) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/content/${id}`, {
+    const response = await fetch(`https://personal-content-app-server.vercel.app/api/content/${id}`, {
       method: "DELETE",
     });
 
@@ -123,7 +123,7 @@ export const deleteContent = async (id) => {
 // Update content by ID
 export const updateContent = async (id, data) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/content/${id}`, {
+    const response = await fetch(`https://personal-content-app-server.vercel.app/api/content/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
