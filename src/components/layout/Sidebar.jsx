@@ -10,7 +10,7 @@ const Sidebar = ({ onSelect, active }) => {
                  overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-800"
     >
       {/* Dashboard Link */}
-      <p className="px-4 py-3 flex items-center gap-2 text-blue-400 hover:text-blue-500 rounded-md transition-colors">
+      <p className="px-4 py-1 flex items-center gap-2 text-blue-400 hover:text-blue-500 rounded-md transition-colors">
         <FaHome className="inline-block" />
         <Link to="/" className="font-medium">
           Dashboard
