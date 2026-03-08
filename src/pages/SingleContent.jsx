@@ -41,7 +41,7 @@ const SingleContent = () => {
         ← Back
       </button>
 
-      <div className="max-w-3xl mx-auto bg-gray-900 p-6 rounded-xl border border-gray-800">
+      <div className="max-w-5xl mx-auto bg-gray-900 p-6 rounded-xl border border-gray-800">
         <h1 className="text-3xl font-bold text-blue-400 mb-4">{data.title}</h1>
 
         <div className="text-sm text-gray-500 mb-6 flex justify-between">
@@ -56,13 +56,19 @@ const SingleContent = () => {
         {/* <p className="leading-relaxed text-gray-300 whitespace-pre-line">
           {data.description}
         </p> */}
-        <div className="prose prose-invert max-w-none">
+        {/* <div className="prose prose-invert max-w-none">
           <p
             dangerouslySetInnerHTML={{
               __html: data?.description || "",
             }}
           />
-        </div>
+        </div> */}
+        <div
+          className="prose prose-invert max-w-none break-words whitespace-normal text-gray-300"
+          dangerouslySetInnerHTML={{
+            __html: data?.description || "",
+          }}
+        />
 
         {data.reference && (
           <div className="mt-6 text-sm text-gray-500">

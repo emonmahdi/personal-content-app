@@ -1,191 +1,228 @@
 import {
-    FaCode,
-    FaUserTie,
-    FaBlog,
-    FaLightbulb,
-    FaBook,
-  } from "react-icons/fa";
-  
-  export const menuData = [
-    {
-      id: 1,
-      title: "Programming",
-      icon: FaCode,
-      subcategories: [
-        // Core Programming
-        { id: "javascript", title: "JavaScript" },
-        { id: "typescript", title: "TypeScript" },
-        { id: "programming-fundamentals", title: "Programming Fundamentals" },
-        { id: "data-structures", title: "Data Structures & Algorithms" },
+  FaCode,
+  FaUserTie,
+  FaBlog,
+  FaLightbulb,
+  FaBook,
+  FaMosque,
+  FaPenNib,
+} from "react-icons/fa";
 
-        // Frontend
-        { id: "react", title: "React.js" },
-        { id: "nextjs", title: "Next.js" },
-        { id: "frontend-architecture", title: "Frontend Architecture" },
+export const menuData = [
+  {
+    id: 1,
+    title: "Programming",
+    icon: FaCode,
+    subcategories: [
+      // Core Programming
+      { id: "javascript", title: "JavaScript" },
+      { id: "typescript", title: "TypeScript" },
+      { id: "programming-fundamentals", title: "Programming Fundamentals" },
+      { id: "data-structures", title: "Data Structures & Algorithms" },
 
-        // Backend
-        { id: "nodejs", title: "Node.js" },
-        { id: "expressjs", title: "Express.js" },
-        { id: "rest-api", title: "REST API Design" },
-        { id: "graphql", title: "GraphQL" },
+      // Frontend
+      { id: "react", title: "React.js" },
+      { id: "nextjs", title: "Next.js" },
+      { id: "frontend-architecture", title: "Frontend Architecture" },
 
-        // Database
-        { id: "mongodb", title: "MongoDB" },
-        { id: "database-design", title: "Database Design" },
+      // Backend
+      { id: "nodejs", title: "Node.js" },
+      { id: "expressjs", title: "Express.js" },
+      { id: "rest-api", title: "REST API Design" },
+      { id: "graphql", title: "GraphQL" },
 
-        // Authentication & Security
-        { id: "authentication", title: "Authentication & JWT" },
-        { id: "web-security", title: "Web Security" },
+      // Database
+      { id: "mongodb", title: "MongoDB" },
+      { id: "database-design", title: "Database Design" },
 
-        // Dev Tools
-        { id: "git", title: "Git & GitHub" },
-        { id: "npm", title: "NPM & Package Management" },
-        { id: "dev-tools", title: "Developer Tools" },
+      // Authentication & Security
+      { id: "authentication", title: "Authentication & JWT" },
+      { id: "web-security", title: "Web Security" },
 
-        // Testing
-        { id: "testing", title: "Testing (Jest / React Testing)" },
+      // Dev Tools
+      { id: "git", title: "Git & GitHub" },
+      { id: "npm", title: "NPM & Package Management" },
+      { id: "dev-tools", title: "Developer Tools" },
 
-        // Architecture
-        { id: "system-design", title: "System Design" },
-        { id: "software-engineering", title: "Software Engineering Concepts" },
+      // Testing
+      { id: "testing", title: "Testing (Jest / React Testing)" },
 
-        // Performance
-        { id: "performance", title: "Performance Optimization" },
+      // Architecture
+      { id: "system-design", title: "System Design" },
+      { id: "software-engineering", title: "Software Engineering Concepts" },
 
-        // Deployment
-        { id: "deployment", title: "Deployment & DevOps" },
+      // Performance
+      { id: "performance", title: "Performance Optimization" },
 
-        // Interview
-        { id: "coding-interview", title: "Coding Interview Preparation" },
-        { id: "javascript-interview", title: "JavaScript Interview Questions" },
-        { id: "react-interview", title: "React Interview Questions" },
-      ],
-    },
-    {
-      id: 2,
-      title: "Interview",
-      icon: FaUserTie,
-      subcategories: [
-        // Core Technical Interview
-        { id: "javascript-interview", title: "JavaScript Interview Questions" },
-        { id: "react-interview", title: "React Interview Questions" },
-        { id: "nextjs-interview", title: "Next.js Interview Questions" },
-        { id: "nodejs-interview", title: "Node.js Interview Questions" },
+      // Deployment
+      { id: "deployment", title: "Deployment & DevOps" },
 
-        // Frontend & Backend
-        { id: "frontend-interview", title: "Frontend Interview Questions" },
-        { id: "backend-interview", title: "Backend Interview Questions" },
+      // Interview
+      { id: "coding-interview", title: "Coding Interview Preparation" },
+      { id: "javascript-interview", title: "JavaScript Interview Questions" },
+      { id: "react-interview", title: "React Interview Questions" },
+    ],
+  },
+  {
+    id: 2,
+    title: "Interview",
+    icon: FaUserTie,
+    subcategories: [
+      // Core Technical Interview
+      { id: "javascript-interview", title: "JavaScript Interview Questions" },
+      { id: "react-interview", title: "React Interview Questions" },
+      { id: "nextjs-interview", title: "Next.js Interview Questions" },
+      { id: "nodejs-interview", title: "Node.js Interview Questions" },
 
-        // Problem Solving
-        { id: "coding-interview", title: "Coding Interview Problems" },
-        { id: "algorithm-interview", title: "Algorithm Interview Questions" },
+      // Frontend & Backend
+      { id: "frontend-interview", title: "Frontend Interview Questions" },
+      { id: "backend-interview", title: "Backend Interview Questions" },
 
-        // System Design
-        { id: "system-design-interview", title: "System Design Interview" },
+      // Problem Solving
+      { id: "coding-interview", title: "Coding Interview Problems" },
+      { id: "algorithm-interview", title: "Algorithm Interview Questions" },
 
-        // Behavioral
-        { id: "behavioral-interview", title: "Behavioral Interview Questions" },
+      // System Design
+      { id: "system-design-interview", title: "System Design Interview" },
 
-        // Practical / Real World
-        { id: "live-coding", title: "Live Coding Interview" },
-        { id: "take-home-assignment", title: "Take Home Assignment" },
+      // Behavioral
+      { id: "behavioral-interview", title: "Behavioral Interview Questions" },
 
-        // Experience
-        { id: "interview-experience", title: "My Interview Experience" },
-        { id: "company-interview", title: "Company Interview Questions" },
+      // Practical / Real World
+      { id: "live-coding", title: "Live Coding Interview" },
+      { id: "take-home-assignment", title: "Take Home Assignment" },
 
-        // Career Preparation
-        { id: "resume-tips", title: "Resume & Portfolio Tips" },
-        { id: "job-preparation", title: "Software Engineer Job Preparation" },
-      ],
-    },
-    {
-      id: 3,
-      title: "Blogs",
-      icon: FaBlog,
-      subcategories: [
-        { id: "developer-journey", title: "Developer Journey" },
-        { id: "personal-blogs", title: "Personal Blogs" },
+      // Experience
+      { id: "interview-experience", title: "My Interview Experience" },
+      { id: "company-interview", title: "Company Interview Questions" },
 
-        { id: "learning-notes", title: "Programming Learning Notes" },
-        { id: "technical-blogs", title: "Technical Blogs" },
+      // Career Preparation
+      { id: "resume-tips", title: "Resume & Portfolio Tips" },
+      { id: "job-preparation", title: "Software Engineer Job Preparation" },
+    ],
+  },
+  {
+    id: 3,
+    title: "Blogs",
+    icon: FaBlog,
+    subcategories: [
+      { id: "developer-journey", title: "Developer Journey" },
+      { id: "personal-blogs", title: "Personal Blogs" },
 
-        { id: "career-growth", title: "Career Growth" },
-        { id: "software-engineer-life", title: "Software Engineer Life" },
+      { id: "learning-notes", title: "Programming Learning Notes" },
+      { id: "technical-blogs", title: "Technical Blogs" },
 
-        { id: "project-experience", title: "Project Experience" },
-        { id: "real-world-projects", title: "Real World Projects" },
+      { id: "career-growth", title: "Career Growth" },
+      { id: "software-engineer-life", title: "Software Engineer Life" },
 
-        { id: "developer-guides", title: "Developer Guides" },
-        { id: "productivity-tips", title: "Developer Productivity Tips" },
+      { id: "project-experience", title: "Project Experience" },
+      { id: "real-world-projects", title: "Real World Projects" },
 
-        // Extra Learning Section
-        { id: "learning-resources", title: "Best Learning Resources" },
-        { id: "learning-strategies", title: "Learning Strategies" },
-        { id: "study-tips", title: "Study Tips for Programmers" },
+      { id: "developer-guides", title: "Developer Guides" },
+      { id: "productivity-tips", title: "Developer Productivity Tips" },
 
-        // Tools & Tips
-        { id: "developer-tools", title: "Developer Tools" },
-        { id: "coding-tips", title: "Coding Tips & Tricks" },
+      // Extra Learning Section
+      { id: "learning-resources", title: "Best Learning Resources" },
+      { id: "learning-strategies", title: "Learning Strategies" },
+      { id: "study-tips", title: "Study Tips for Programmers" },
 
-        // Community & Industry
-        { id: "developer-community", title: "Developer Community" },
-        { id: "tech-industry", title: "Tech Industry Insights" },
-      ],
-    },
-    {
-      id: 4,
-      title: "Learn From Others",
-      icon: FaLightbulb,
-      subcategories: [
-        { id: "youtube-notes", title: "YouTube Learning Notes" },
-        { id: "articles", title: "Articles & Blog Notes" },
-        { id: "podcasts", title: "Tech Podcasts" },
+      // Tools & Tips
+      { id: "developer-tools", title: "Developer Tools" },
+      { id: "coding-tips", title: "Coding Tips & Tricks" },
 
-        { id: "github-learning", title: "GitHub Repositories Learning" },
-        { id: "open-source", title: "Open Source Learning" },
+      // Community & Industry
+      { id: "developer-community", title: "Developer Community" },
+      { id: "tech-industry", title: "Tech Industry Insights" },
+    ],
+  },
+  {
+    id: 4,
+    title: "Learn From Others",
+    icon: FaLightbulb,
+    subcategories: [
+      { id: "youtube-notes", title: "YouTube Learning Notes" },
+      { id: "articles", title: "Articles & Blog Notes" },
+      { id: "podcasts", title: "Tech Podcasts" },
 
-        { id: "developer-talks", title: "Developer Talks & Conferences" },
-        { id: "twitter-insights", title: "Twitter / X Developer Insights" },
+      { id: "github-learning", title: "GitHub Repositories Learning" },
+      { id: "open-source", title: "Open Source Learning" },
 
-        { id: "course-notes", title: "Online Course Notes" },
-        { id: "book-notes", title: "Programming Book Notes" },
+      { id: "developer-talks", title: "Developer Talks & Conferences" },
+      { id: "twitter-insights", title: "Twitter / X Developer Insights" },
 
-        { id: "mentor-advice", title: "Mentor Advice" },
-        { id: "senior-developer-tips", title: "Senior Developer Tips" },
+      { id: "course-notes", title: "Online Course Notes" },
+      { id: "book-notes", title: "Programming Book Notes" },
 
-        { id: "industry-insights", title: "Tech Industry Insights" },
-        { id: "case-studies", title: "Tech Case Studies" },
-      ],
-    },
-    {
-      id: 5,
-      title: "My Notes",
-      icon: FaBook,
-      subcategories: [
-        { id: "daily-routine", title: "Daily Routine" },
-        { id: "daily-diary", title: "Daily Diary" },
-        { id: "life-story", title: "My Life Story" },
-        { id: "about-me", title: "About Me" },
-        { id: "personal-profile", title: "Personal Profile" },
+      { id: "mentor-advice", title: "Mentor Advice" },
+      { id: "senior-developer-tips", title: "Senior Developer Tips" },
 
-        { id: "goals", title: "Life Goals & Dreams" },
-        { id: "ideas", title: "Ideas & Thoughts" },
+      { id: "industry-insights", title: "Tech Industry Insights" },
+      { id: "case-studies", title: "Tech Case Studies" },
+    ],
+  },
+  {
+    id: 5,
+    title: "My Notes",
+    icon: FaBook,
+    subcategories: [
+      { id: "about-me", title: "About Me" },
+      { id: "personal-profile", title: "Personal Profile" },
+      { id: "life-story", title: "My Life Story" },
 
-        { id: "hobbies", title: "My Hobbies" },
-        { id: "skills", title: "My Skills" },
+      { id: "daily-routine", title: "Daily Routine" },
+      { id: "daily-diary", title: "Daily Diary" },
 
-        { id: "likes", title: "My Likes" },
-        { id: "dislikes", title: "My Dislikes" },
+      { id: "goals", title: "Life Goals & Dreams" },
+      { id: "future-plans", title: "Future Plans" },
 
-        { id: "personal-experiences", title: "Life Experiences" },
-        { id: "memories", title: "Important Memories" },
+      { id: "ideas", title: "Ideas & Inspirations" }, // here life , project, business idea
 
-        { id: "family", title: "Family Information" },
-        { id: "wife", title: "My Wife" },
+      { id: "hobbies", title: "My Hobbies" },
+      { id: "skills", title: "My Skills" },
 
-        { id: "lessons", title: "Life Lessons" },
-        { id: "future-plans", title: "Future Plans" },
-      ],
-    },
-  ];
+      { id: "likes", title: "My Likes" },
+      { id: "dislikes", title: "My Dislikes" },
+
+      { id: "personal-experiences", title: "Life Experiences" },
+      { id: "memories", title: "Important Memories" },
+
+      { id: "family", title: "Family Information" },
+      { id: "wife", title: "My Wife" },
+
+      { id: "lessons", title: "Life Lessons" },
+    ],
+  },
+  {
+    id: 6,
+    title: "Islamic",
+    icon: FaMosque,
+    subcategories: [
+      { id: "quran-ayat", title: "Qur'an Ayat" },
+      { id: "namaz-surah", title: "Namaz Surah & Ayat" },
+      { id: "hadith", title: "Hadith Collection" },
+      { id: "dua-zikir", title: "Dua & Zikir" },
+      { id: "islamic-stories", title: "Islamic Stories" },
+      { id: "islamic-lessons", title: "Islamic Lessons & Wisdom" },
+      { id: "prophets-stories", title: "Stories of the Prophets" },
+      { id: "sahaba-stories", title: "Stories of the Sahaba" },
+      { id: "daily-islamic-reminders", title: "Daily Islamic Reminders" },
+    ],
+  },
+  {
+    id: 7,
+    title: "My Writings",
+    icon: FaPenNib,
+    subcategories: [
+      { id: "short-stories", title: "Short Stories" },
+      { id: "funny-stories", title: "Funny Stories" },
+      { id: "motivational-stories", title: "Motivational Stories" },
+      { id: "life-stories", title: "Life Stories" },
+
+      { id: "golpo", title: "Golpo" },
+      { id: "kobita", title: "Kobita (Poetry)" },
+
+      { id: "personal-thoughts", title: "Personal Thoughts" },
+      { id: "creative-writing", title: "Creative Writing" },
+    ],
+  },
+];

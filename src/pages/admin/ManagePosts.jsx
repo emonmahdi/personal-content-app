@@ -98,6 +98,16 @@ const ManagePosts = () => {
     }
   };
 
+  // Function to strip HTML tags and truncate
+  const truncateHTML = (html, maxLength = 120) => {
+    if (!html) return "";
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    const text = tempDiv.textContent || tempDiv.innerText || "";
+    if (text.length > maxLength) return text.substring(0, maxLength) + "...";
+    return text;
+  };
+
   if (loading) return <div className="text-gray-400 p-6">Loading posts...</div>;
 
   return (
@@ -114,14 +124,17 @@ const ManagePosts = () => {
         {posts.map((post) => (
           <div
             key={post._id}
-            className="bg-gray-900 p-5 rounded-xl border border-gray-800 shadow hover:shadow-lg transition"
+            className="bg-gray-900 p-5 rounded-xl border border-gray-800 shadow hover:shadow-lg transition overflow-hidden"
           >
             <h2 className="text-xl font-semibold text-blue-400">
               {post.title}
             </h2>
-            <p className="text-gray-400 mt-2 line-clamp-3">
-              {post.description}
-            </p>
+            <div
+              className="prose prose-invert max-w-none break-words whitespace-normal text-gray-300"
+              dangerouslySetInnerHTML={{
+                __html: truncateHTML(post.description, 120) || "",
+              }}
+            />
             <div className="text-sm text-gray-500 mt-3 flex justify-between">
               <span>Author: {post.author}</span>
               <span>
