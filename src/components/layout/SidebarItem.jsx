@@ -59,11 +59,11 @@ const SidebarItem = ({ category, active }) => {
       {/* Category Header */}
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-4 py-2 rounded-lg hover:bg-gray-800 transition"
+        className="w-full flex items-center justify-between px-4 py-2 rounded-lg hover:bg-gray-800 transition cursor-pointer"
       >
         <div className="flex items-center gap-3">
           <Icon className="text-blue-400" />
-          <span>{category.title}</span>
+          <span className="cursor-pointer">{category.title}</span>
         </div>
         <FaChevronDown
           className={`transition-transform ${open ? "rotate-180" : ""}`}
@@ -78,7 +78,7 @@ const SidebarItem = ({ category, active }) => {
             return (
               <Link key={sub.id} to={`/category/${sub.id}`}>
                 <button
-                  className={`block w-full text-left px-3 py-1.5 rounded-md text-sm transition
+                  className={`block w-full text-left px-3 py-1.5 rounded-md text-sm cursor-pointer transition
                     ${
                       isActive
                         ? "bg-blue-600 text-white"
