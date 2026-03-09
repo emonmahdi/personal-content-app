@@ -27,21 +27,6 @@ const modules = {
   ],
 };
 
-// const modules = {
-//   toolbar: [
-//     [{ font: [] }],
-//     [{ header: [1, 2, 3, 4, false] }],
-//     [{ size: ["small", false, "large", "huge"] }],
-//     ["bold", "italic", "underline", "strike"],
-//     [{ color: [] }, { background: [] }],
-//     [{ list: "ordered" }, { list: "bullet" }],
-//     [{ align: [] }],
-//     ["blockquote", "code-block"],
-//     ["link", "image"],
-//     ["clean"],
-//   ],
-// };
-
 const CreatePost = () => {
   const {
     register,
@@ -136,16 +121,6 @@ const CreatePost = () => {
                   className="editor-scroll"
                 />
               </div>
-
-              {/* <div className="bg-white rounded-lg overflow-hidden">
-                <ReactQuill
-                  theme="snow"
-                  value={description}
-                  onChange={setDescription}
-                  modules={modules}
-                  className="min-h-[200px]"
-                />
-              </div> */}
             </div>
 
             {/* Category */}

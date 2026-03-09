@@ -10,6 +10,7 @@ import {
 } from "../../api/contentApi";
 import { menuData } from "../../data/menuData";
 import Swal from "sweetalert2";
+import Loader from "../../components/ui/Loader";
 
 Modal.setAppElement("#root"); // Required for accessibility
 
@@ -108,7 +109,7 @@ const ManagePosts = () => {
     return text;
   };
 
-  if (loading) return <div className="text-gray-400 p-6">Loading posts...</div>;
+  if (loading) return <Loader />;
 
   return (
     <div className="p-6">

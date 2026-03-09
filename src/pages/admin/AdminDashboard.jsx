@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchAllContent } from "../../api/contentApi";
 import { menuData } from "../../data/menuData";
 import { Link } from "react-router";
+import Loader from "../../components/ui/Loader";
 
 const AdminDashboard = () => {
   const [data, setData] = useState([]);
@@ -17,8 +18,7 @@ const AdminDashboard = () => {
     loadData();
   }, []);
 
-  if (loading)
-    return <div className="text-gray-400">Loading dashboard...</div>;
+  if (loading) return <Loader />;
 
   // 🔥 Total posts
   const totalPosts = data.length;
@@ -34,18 +34,14 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-blue-400 mb-8">
-        Admin Dashboard
-      </h1>
+      <h1 className="text-3xl font-bold text-blue-400 mb-8">Admin Dashboard</h1>
 
       {/* ================= Stats Cards ================= */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         {/* Total Posts */}
         <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-gray-800 shadow-lg hover:-translate-y-1 transition">
           <h2 className="text-gray-400 text-sm">Total Posts</h2>
-          <p className="text-4xl font-bold text-blue-400 mt-3">
-            {totalPosts}
-          </p>
+          <p className="text-4xl font-bold text-blue-400 mt-3">{totalPosts}</p>
         </div>
 
         {/* Total Categories */}
@@ -60,9 +56,7 @@ const AdminDashboard = () => {
         <Link to="/admin/create">
           <div className="bg-gradient-to-br from-blue-600 to-blue-500 p-6 rounded-2xl shadow-lg hover:opacity-90 transition cursor-pointer">
             <h2 className="text-sm text-white">Create New Post</h2>
-            <p className="text-2xl font-bold text-white mt-3">
-              + Add Content
-            </p>
+            <p className="text-2xl font-bold text-white mt-3">+ Add Content</p>
           </div>
         </Link>
       </div>
@@ -80,12 +74,8 @@ const AdminDashboard = () => {
                 key={sub.id}
                 className="bg-gray-800 p-4 rounded-xl border border-gray-700"
               >
-                <h3 className="text-white font-semibold">
-                  {sub.title}
-                </h3>
-                <p className="text-gray-400 text-sm">
-                  {main.title}
-                </p>
+                <h3 className="text-white font-semibold">{sub.title}</h3>
+                <p className="text-gray-400 text-sm">{main.title}</p>
                 <p className="text-blue-400 text-2xl font-bold mt-2">
                   {categoryCount[sub.id] || 0}
                 </p>
@@ -112,12 +102,8 @@ const AdminDashboard = () => {
               className="flex justify-between items-center bg-gray-800 p-4 rounded-lg border border-gray-700"
             >
               <div>
-                <h3 className="text-white font-medium">
-                  {post.title}
-                </h3>
-                <p className="text-gray-400 text-sm">
-                  {post.category}
-                </p>
+                <h3 className="text-white font-medium">{post.title}</h3>
+                <p className="text-gray-400 text-sm">{post.category}</p>
               </div>
 
               <span className="text-gray-500 text-sm">
