@@ -2,171 +2,238 @@
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { menuData } from "../../data/menuData";
-import ReactQuill from "react-quill-new";
+import ReactQuill, { Quill } from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 import { useState } from "react";
 
+const Font = Quill.import("formats/font");
+
+Font.whitelist = ["inter", "roboto", "poppins", "serif", "monospace"];
+
+Quill.register(Font, true);
+
 const modules = {
   toolbar: [
+    [{ font: ["inter", "roboto", "poppins", "serif", "monospace"] }],
     [{ header: [1, 2, 3, false] }],
+    [{ size: ["small", false, "large", "huge"] }],
     ["bold", "italic", "underline"],
+    [{ color: [] }, { background: [] }],
     [{ list: "ordered" }, { list: "bullet" }],
-    ["link", "code-block"],
+    [{ align: [] }],
+    ["blockquote", "code-block"],
+    ["link", "image"],
     ["clean"],
   ],
 };
 
+// const modules = {
+//   toolbar: [
+//     [{ font: [] }],
+//     [{ header: [1, 2, 3, 4, false] }],
+//     [{ size: ["small", false, "large", "huge"] }],
+//     ["bold", "italic", "underline", "strike"],
+//     [{ color: [] }, { background: [] }],
+//     [{ list: "ordered" }, { list: "bullet" }],
+//     [{ align: [] }],
+//     ["blockquote", "code-block"],
+//     ["link", "image"],
+//     ["clean"],
+//   ],
+// };
+
 const CreatePost = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
   const [description, setDescription] = useState("");
-
-  //   const onSubmit = async (data) => {
-  //     try {
-  //       console.log("Submitting...", data);
-
-  //       const res = await fetch("https://personal-content-app-server.vercel.app/api/content", {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify(data),
-  //       });
-
-  //       console.log("Response status:", res.status);
-
-  //       const result = await res.json();
-  //       console.log("Response data:", result);
-
-  //       if (!res.ok) {
-  //         toast.error(result.message || "Failed to create post");
-  //         return;
-  //       }
-
-  //       toast.success("Post Created Successfully");
-  //       reset();
-  //     } catch (error) {
-  //       console.error(error);
-  //       toast.error("Server not responding");
-  //     }
-  //   };
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
+
       const payload = {
         ...data,
-        description: description,
+        description,
       };
 
-      const res = await fetch("https://personal-content-app-server.vercel.app/api/content", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        "https://personal-content-app-server.vercel.app/api/content",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       const result = await res.json();
 
       if (!res.ok) {
         toast.error(result.message || "Failed to create post");
+        setLoading(false);
         return;
       }
 
-      toast.success("Post Created Successfully");
+      toast.success("Post Created Successfully 🚀");
 
       reset();
       setDescription("");
     } catch (error) {
       toast.error("Server not responding");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <Toaster />
-      <div className="max-w-2xl mx-auto bg-gray-900 p-8 rounded-2xl border border-gray-800 shadow-lg">
-        <h1 className="text-2xl font-bold text-blue-400 mb-6">
-          Create New Post
-        </h1>
+      <Toaster position="top-right" />
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      <div className="min-h-screen bg-gray-950 px-4 py-8">
+        <div className="max-w-4xl mx-auto bg-gray-900 p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg">
           {/* Title */}
-          <div>
-            <label className="block mb-2">Title</label>
-            <input
-              {...register("title", { required: true })}
-              className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          <h1 className="text-2xl md:text-3xl font-bold text-blue-400 mb-8">
+            Create New Post
+          </h1>
 
-          {/* Description */}
-          <div>
-            <label className="block mb-2 text-white font-medium">
-              Description
-            </label>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            {/* Title */}
+            <div>
+              <label className="block mb-2 text-sm text-gray-300">
+                Post Title
+              </label>
 
-            <ReactQuill
-              theme="snow"
-              value={description}
-              onChange={setDescription}
-              modules={modules}
-              className="w-full rounded-lg border border-gray-700 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          {/* <div>
-            <label className="block mb-2">Description</label>
-            <textarea
-              {...register("description")}
-              rows="5"
-              className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div> */}
+              <input
+                {...register("title", { required: "Title is required" })}
+                placeholder="Enter post title..."
+                className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
 
-          {/* Category Dropdown */}
-          <div>
-            <label className="block mb-2">Category</label>
-            <select
-              {...register("category", { required: true })}
-              className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700"
-            >
-              <option value="">Select Category</option>
-              {menuData.flatMap((main) =>
-                main.subcategories.map((sub) => (
-                  <option key={sub.id} value={sub.id}>
-                    {sub.title}
-                  </option>
-                ))
+              {errors.title && (
+                <p className="text-red-400 text-sm mt-1">
+                  {errors.title.message}
+                </p>
               )}
-            </select>
-          </div>
+            </div>
 
-          {/* Author */}
-          <div>
-            <label className="block mb-2">Author</label>
-            <input
-              {...register("author")}
-              className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700"
-            />
-          </div>
+            {/* Description Editor */}
+            <div>
+              <label className="block mb-2 text-sm text-gray-300">
+                Description
+              </label>
 
-          {/* Reference */}
-          <div>
-            <label className="block mb-2">Reference</label>
-            <input
-              {...register("reference")}
-              className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700"
-            />
-          </div>
+              <div className="bg-white rounded-lg overflow-hidden">
+                <ReactQuill
+                  theme="snow"
+                  value={description}
+                  onChange={setDescription}
+                  modules={modules}
+                  className="editor-scroll"
+                />
+              </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold"
-          >
-            Publish Post
-          </button>
-        </form>
+              {/* <div className="bg-white rounded-lg overflow-hidden">
+                <ReactQuill
+                  theme="snow"
+                  value={description}
+                  onChange={setDescription}
+                  modules={modules}
+                  className="min-h-[200px]"
+                />
+              </div> */}
+            </div>
+
+            {/* Category */}
+            <div>
+              <label className="block mb-2 text-sm text-gray-300">
+                Category
+              </label>
+
+              <select
+                {...register("category", { required: "Category required" })}
+                className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700 focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">Select Category</option>
+
+                {menuData.flatMap((main) =>
+                  main.subcategories.map((sub) => (
+                    <option key={sub.id} value={sub.id}>
+                      {sub.title}
+                    </option>
+                  ))
+                )}
+              </select>
+
+              {errors.category && (
+                <p className="text-red-400 text-sm mt-1">
+                  {errors.category.message}
+                </p>
+              )}
+            </div>
+
+            {/* Grid fields */}
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Author */}
+              <div>
+                <label className="block mb-2 text-sm text-gray-300">
+                  Author
+                </label>
+
+                <input
+                  {...register("author")}
+                  placeholder="Author name"
+                  className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700"
+                />
+              </div>
+
+              {/* Reference */}
+              <div>
+                <label className="block mb-2 text-sm text-gray-300">
+                  Reference
+                </label>
+
+                <input
+                  {...register("reference")}
+                  placeholder="Source / reference"
+                  className="w-full p-3 bg-gray-800 rounded-lg border border-gray-700"
+                />
+              </div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex gap-4 pt-2">
+              <button
+                type="submit"
+                disabled={loading}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold"
+              >
+                {loading ? "Publishing..." : "Publish Post"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  reset();
+                  setDescription("");
+                }}
+                className="px-6 py-3 rounded-lg border border-gray-700 hover:bg-gray-800 transition"
+              >
+                Clear
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );
 };
 
-export default CreatePost;
+export default CreatePost;      
 // import { useForm } from "react-hook-form";
 // import { useState } from "react";
 // import toast from "react-hot-toast";

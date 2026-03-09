@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { fetchAllContent } from "../../api/contentApi";
 import { menuData } from "../../data/menuData";
+import DashboardLoader from "../ui/DashboardLoader";
 
 const DashboardHome = () => {
   const [data, setData] = useState([]);
@@ -17,8 +18,7 @@ const DashboardHome = () => {
     loadData();
   }, []);
 
-  if (loading)
-    return <div className="text-gray-400 p-6">Loading...</div>;
+  if (loading) return <DashboardLoader />;
 
   // 🔥 Count content by category
   const categoryCount = data.reduce((acc, item) => {
@@ -38,17 +38,14 @@ const DashboardHome = () => {
             const count = categoryCount[sub.id] || 0;
 
             return (
-              <Link
-                key={sub.id}
-                to={`/category/${sub.id}`}
-                className="group"
-              >
-                <div className="bg-gradient-to-br from-gray-900 to-gray-800 
+              <Link key={sub.id} to={`/category/${sub.id}`} className="group">
+                <div
+                  className="bg-gradient-to-br from-gray-900 to-gray-800 
                   p-6 rounded-2xl border border-gray-800 
                   shadow-lg hover:shadow-blue-500/20 
                   hover:-translate-y-1 
-                  transition-all duration-300">
-
+                  transition-all duration-300"
+                >
                   <h2 className="text-xl font-semibold text-white group-hover:text-blue-400 transition">
                     {sub.title}
                   </h2>
@@ -61,15 +58,12 @@ const DashboardHome = () => {
                     <span className="text-4xl font-bold text-blue-400">
                       {count}
                     </span>
-                    <span className="text-gray-500 text-sm">
-                      Posts
-                    </span>
+                    <span className="text-gray-500 text-sm">Posts</span>
                   </div>
 
                   <div className="mt-4 text-blue-400 text-sm opacity-0 group-hover:opacity-100 transition">
                     View Content →
                   </div>
-
                 </div>
               </Link>
             );

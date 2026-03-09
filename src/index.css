@@ -22,5 +22,66 @@
     color: #f3f4f6; /* Tailwind gray-100 */
   }
 
+
+  .editor-scroll .ql-container {
+    height: 400px;
+  }
+  
+  .editor-scroll .ql-editor {
+    overflow-y: auto;
+  }
+
+  
+  /* React Quill Fonts */
+
+.ql-font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.ql-font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.ql-font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.ql-font-serif {
+  font-family: Georgia, serif;
+}
+
+.ql-font-monospace {
+  font-family: monospace;
+}
+
+
+/* Font dropdown names */
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="inter"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="inter"]::before {
+  content: "Inter";
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="roboto"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="roboto"]::before {
+  content: "Roboto";
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="poppins"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="poppins"]::before {
+  content: "Poppins";
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="serif"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="serif"]::before {
+  content: "Serif";
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="monospace"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="monospace"]::before {
+  content: "Monospace";
+}
+
+
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
