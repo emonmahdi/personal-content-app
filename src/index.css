@@ -1,49 +1,69 @@
 /* Responsive editor height */
 .ql-editor {
-    min-height: 200px; /* mobile default */
-  }
-  
-  /* Larger screens */
-  @media (min-width: 768px) {
-    .ql-editor {
-      min-height: 300px; /* tablet */
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .ql-editor {
-      min-height: 400px; /* desktop */
-    }
-  }
-  
-  /* Optional: dark theme for editor content */
+  min-height: 200px; /* mobile default */
+}
+.prose { 
+  line-height: 1.9;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+.prose p {
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose pre {
+  overflow-x: auto;
+}
+.prose span {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+/* Larger screens */
+@media (min-width: 768px) {
   .ql-editor {
-    background-color: #1f2937; /* Tailwind gray-900 */
-    color: #f3f4f6; /* Tailwind gray-100 */
+    min-height: 300px; /* tablet */
   }
+}
 
-
-  .editor-scroll .ql-container {
-    height: 400px;
+@media (min-width: 1024px) {
+  .ql-editor {
+    min-height: 400px; /* desktop */
   }
-  
-  .editor-scroll .ql-editor {
-    overflow-y: auto;
-  }
+}
 
-  
-  /* React Quill Fonts */
+/* Optional: dark theme for editor content */
+.ql-editor {
+  background-color: #1f2937; /* Tailwind gray-900 */
+  color: #f3f4f6; /* Tailwind gray-100 */
+}
+
+.editor-scroll .ql-container {
+  height: 400px;
+}
+
+.editor-scroll .ql-editor {
+  overflow-y: auto;
+}
+
+/* React Quill Fonts */
 
 .ql-font-inter {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .ql-font-roboto {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .ql-font-poppins {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .ql-font-serif {
@@ -53,7 +73,6 @@
 .ql-font-monospace {
   font-family: monospace;
 }
-
 
 /* Font dropdown names */
 
@@ -82,6 +101,43 @@
   content: "Monospace";
 }
 
+.article-content {
+  font-family: "Noto Sans Bengali", "Hind Siliguri", sans-serif;
+  line-height: 1.9;
+  word-spacing: normal;
+  letter-spacing: normal;
 
+  /* FIX OVERFLOW */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.article-content p {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.article-content pre {
+  background: #1f2937;
+  padding: 14px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.article-content code {
+  word-break: break-word;
+}
+
+.article-content a {
+  word-break: break-all;
+}
+ 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";

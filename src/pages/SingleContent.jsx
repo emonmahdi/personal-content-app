@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { fetchSingleContent } from "../api/contentApi";
 import ContentSkeleton from "../components/ui/ContentSkeleton";
+import DOMPurify from "dompurify";
 
 const SingleContent = () => {
   const { id } = useParams();
@@ -62,19 +63,13 @@ const SingleContent = () => {
         {/* Description */}
         <div
           className="
-          prose 
-          prose-invert 
-          max-w-none 
-          break-words 
-          text-gray-300
-          prose-headings:text-white
-          prose-a:text-blue-400
-          prose-strong:text-white
-          prose-img:rounded-lg
-          prose-pre:bg-gray-800
-          "
+  article-content
+  text-gray-300
+  leading-8
+  text-base
+  "
           dangerouslySetInnerHTML={{
-            __html: data?.description || "",
+            __html: DOMPurify.sanitize(data?.description || ""),
           }}
         />
 
