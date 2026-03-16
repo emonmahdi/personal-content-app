@@ -107,6 +107,7 @@ export const menuData = [
     icon: FaBlog,
     subcategories: [
       { id: "developer-journey", title: "Developer Journey" },
+      { id: "keyword-learning", title: "Keyword Learning" },
       { id: "personal-blogs", title: "Personal Blogs" },
 
       { id: "learning-notes", title: "Programming Learning Notes" },
@@ -176,6 +177,8 @@ export const menuData = [
       { id: "future-plans", title: "Future Plans" },
 
       { id: "ideas", title: "Ideas & Inspirations" }, // here life , project, business idea
+      { id: "english-study", title: "English Study" },
+      { id: "requirements-study", title: "Requirements Study" },
 
       { id: "hobbies", title: "My Hobbies" },
       { id: "skills", title: "My Skills" },
